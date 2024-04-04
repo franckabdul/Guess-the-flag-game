@@ -36,7 +36,6 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     background: linear-gradient(45deg, rgb(57, 47, 169), rgb(192, 47, 18));
   }
-/* Game Card Page */
  /* Game Card Page */
 body {
     margin: 0;
@@ -83,6 +82,7 @@ body {
   
   .option-button {
     background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    width: 100%;
     color: white;
     padding: 10px 20px;
     margin-bottom: 10px; /* Added margin-bottom */
@@ -93,6 +93,10 @@ body {
     font-size: 14px;
     cursor: pointer;
     display: block; /* Changed display to block */
+  }
+  .option-button:hover{
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background: blueviolet;
   }
   
   .score-box p {
