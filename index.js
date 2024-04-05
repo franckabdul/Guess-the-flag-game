@@ -1,14 +1,46 @@
-/*
-First of all i need an array of objects for countries with the id, the name and the country.
-Next I will need to select a country randomly and store it as the correct answer.
-Display the flag of the correct answer in the image box.
-Select 4 other random id's that are different from the correct answer and display the names as the other options.
-Update the score regarding the player answer.
-*/
 
+
+
+// notworking(){
+//   function getRandomOptions(){
+//     //   const min = 0;
+//     //   const max = countries.length;
+//     //   const answers=[];
+//     //   const selected=[];
+//     //   for(let i=0;i<5;i++){
+//     //     answers[i]=countries[Math.floor(Math.random()*max)].id;
+//     //     selected[i]=answers[i];
+//     //     for(let j=0;j<i;j++){
+//     //       if(answers[i]==selected[j]){
+//     //         answers[i]=countries[Math.floor(Math.random()*max)].id;
+//     //         selected[i]=answers[i];
+//     //       }
+//     //     }
+//     //   }
+//     //   const buttons= document.querySelectorAll('.option-button');
+    
+//     //   for( let i=0;i<5;i++){
+//     //     buttons[i].textContent=countries[answers[i]].name;
+//     //   }
+    
+    
+    
+//     //   const correctAnswerIndex = Math.floor(Math.random() * 4);
+//     //   const correctAnswer = countries[correctAnswerIndex].id;
+    
+      
+      
+    
+    
+    
+    
+       
+    
+//     // }
+    
+//     // const options=[];
+// }
 let score=0;
-
-
 
 const countries = [
   { id: 1, name: "Afghanistan", flag: "https://flagcdn.com/256x192/af.png" },
@@ -209,43 +241,19 @@ const countries = [
   { id: 196, name: "Zimbabwe", flag: "https://flagcdn.com/256x192/zw.png" }
 ];
 
-  
-function getRandomOptions(){
-  const min = 0;
-  const max = countries.length;
-  const answers=[];
-  const selected=[];
-  for(let i=0;i<5;i++){
-    answers[i]=countries[Math.floor(Math.random()*max)].id;
-    selected[i]=answers[i];
-    for(let j=0;j<i;j++){
-      if(answers[i]==selected[j]){
-        answers[i]=countries[Math.floor(Math.random()*max)].id;
-        selected[i]=answers[i];
-      }
+function optionSelection(){
+  const options=[];
+  while(options.length()<5){
+    let index=Math.floor(Math.random()*(countries.length()-1));
+    if(options.includes(index)==false){
+      options.push(index);
     }
   }
-  const buttons= document.querySelectorAll('.option-button');
-
-  for( let i=0;i<5;i++){
-    buttons[i].textContent=countries[answers[i]].name;
-  }
-
-
-
-  const correctAnswerIndex = Math.floor(Math.random() * 4);
-  const correctAnswer = countries[correctAnswerIndex].id;
-
-  
-  
-
-
-
-
-   
-
+  return options;
 }
 
-const options=[];
+  
+// 
 
 getRandomOptions();
+
