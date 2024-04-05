@@ -249,11 +249,13 @@ function optionSelection(){
   }
   return options;
 }
-const correctAnswerIndex=Math.floor(Math.random()*4);
-const options=optionSelection();
-function updatingButtons(){
 
-  
+
+const options=optionSelection();
+const correctAnswerIndex=Math.floor(Math.random()*4);
+const correctAnswerName=countries[options[correctAnswerIndex]].name;
+
+function updatingButtons(){
 
 //Assigning values to buttons
 const buttons=document.querySelectorAll('.option-button');
@@ -261,6 +263,14 @@ for(let i=0;i<5;i++){
   buttons[i].textContent=countries[options[i]].name;
 }
 }
+function displayFlag(){
+  const correctAnswerFlag=countries[options[correctAnswerIndex]].flag;
+  document.getElementById("flag_image").src=correctAnswerFlag;
+}
+
 updatingButtons();
+displayFlag();
+console.log(correctAnswerName);
+console.log(correctAnswerIndex);
 
 
