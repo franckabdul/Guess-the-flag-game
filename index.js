@@ -1,44 +1,5 @@
-
-// notworking(){
-//   function getRandomOptions(){
-//     //   const min = 0;
-//     //   const max = countries.length;
-//     //   const answers=[];
-//     //   const selected=[];
-//     //   for(let i=0;i<5;i++){
-//     //     answers[i]=countries[Math.floor(Math.random()*max)].id;
-//     //     selected[i]=answers[i];
-//     //     for(let j=0;j<i;j++){
-//     //       if(answers[i]==selected[j]){
-//     //         answers[i]=countries[Math.floor(Math.random()*max)].id;
-//     //         selected[i]=answers[i];
-//     //       }
-//     //     }
-//     //   }
-//     //   const buttons= document.querySelectorAll('.option-button');
-    
-//     //   for( let i=0;i<5;i++){
-//     //     buttons[i].textContent=countries[answers[i]].name;
-//     //   }
-    
-    
-    
-//     //   const correctAnswerIndex = Math.floor(Math.random() * 4);
-//     //   const correctAnswer = countries[correctAnswerIndex].id;
-    
-      
-      
-    
-    
-    
-    
-       
-    
-//     // }
-    
-//     // const options=[];
-// }
 let score=0;
+let options, correctAnswerIndex;
 
 const countries = [
   { id: 1, name: "Afghanistan", flag: "https://flagcdn.com/256x192/af.png" },
@@ -242,7 +203,7 @@ const countries = [
 function optionSelection(){
   const options=[];
   while(options.length<5){
-    let index=Math.floor(Math.random()*(countries.length-1));
+    let index=Math.floor(Math.random()*(countries.length));
     if(options.includes(index)==false){
       options.push(index);
     }
@@ -251,26 +212,46 @@ function optionSelection(){
 }
 
 
-const options=optionSelection();
-const correctAnswerIndex=Math.floor(Math.random()*4);
-const correctAnswerName=countries[options[correctAnswerIndex]].name;
 
-function updatingButtons(){
 
-//Assigning values to buttons
-const buttons=document.querySelectorAll('.option-button');
+function updatingButtons(buttons){
+
 for(let i=0;i<5;i++){
   buttons[i].textContent=countries[options[i]].name;
 }
 }
+
 function displayFlag(){
   const correctAnswerFlag=countries[options[correctAnswerIndex]].flag;
   document.getElementById("flag_image").src=correctAnswerFlag;
 }
 
-updatingButtons();
+function checkUserAnswer(buttons) {
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', function() {
+      console.log("Selected index: " + index);
+      if (index == correctAnswerIndex) {
+        score=score+1;
+      } 
+      document.getElementById('score').innerHTML = score; // Update score after each button click
+      initializeGame();
+    });
+  });
+
+}
+function initializeGame(){
+options=optionSelection();
+correctAnswerIndex=Math.floor(Math.random()*5);// There are five options to choose from
+const correctAnswerName=countries[options[correctAnswerIndex]].name;
+const buttons=document.querySelectorAll('.option-button');
+
+updatingButtons(buttons);
 displayFlag();
-console.log(correctAnswerName);
-console.log(correctAnswerIndex);
+checkUserAnswer(buttons);
+
+}
+
+initializeGame();
+
 
 
