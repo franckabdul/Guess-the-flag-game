@@ -1,6 +1,4 @@
 
-
-
 // notworking(){
 //   function getRandomOptions(){
 //     //   const min = 0;
@@ -243,17 +241,26 @@ const countries = [
 
 function optionSelection(){
   const options=[];
-  while(options.length()<5){
-    let index=Math.floor(Math.random()*(countries.length()-1));
+  while(options.length<5){
+    let index=Math.floor(Math.random()*(countries.length-1));
     if(options.includes(index)==false){
       options.push(index);
     }
   }
   return options;
 }
+const correctAnswerIndex=Math.floor(Math.random()*4);
+const options=optionSelection();
+function updatingButtons(){
 
   
-// 
 
-getRandomOptions();
+//Assigning values to buttons
+const buttons=document.querySelectorAll('.option-button');
+for(let i=0;i<5;i++){
+  buttons[i].textContent=countries[options[i]].name;
+}
+}
+updatingButtons();
+
 
