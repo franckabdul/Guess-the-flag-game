@@ -1,5 +1,9 @@
 let score=0;
 let options, correctAnswerIndex;
+const buttons = document.querySelectorAll('.option-button');
+
+
+
 
 const countries = [
   { id: 1, name: "Afghanistan", flag: "https://flagcdn.com/256x192/af.png" },
@@ -201,24 +205,20 @@ const countries = [
 ];
 
 function optionSelection(){
-  const options=[];
+  const optionsArray=[];
   while(options.length<5){
-    let index=Math.floor(Math.random()*(countries.length));
-    if(options.includes(index)==false){
-      options.push(index);
+    let index=Math.floor(Math.random()* countries.length);
+    if(!optionsArray.includes(index)){
+      optionsArray.push(index);
     }
   }
-  return options;
+  return optionsArray;
 }
-
-
-
 
 function updatingButtons(buttons){
-
-for(let i=0;i<5;i++){
-  buttons[i].textContent=countries[options[i]].name;
-}
+  for(let i=0;i<5;i++){
+    buttons[i].textContent= countries[options[i]].name;
+  }
 }
 
 function displayFlag(){
@@ -226,32 +226,34 @@ function displayFlag(){
   document.getElementById("flag_image").src=correctAnswerFlag;
 }
 
-function checkUserAnswer(buttons) {
-  buttons.forEach((button, index) => {
-    button.addEventListener('click', function() {
-      console.log("Selected index: " + index);
-      if (index == correctAnswerIndex) {
-        score=score+1;
-      } 
-      document.getElementById('score').innerHTML = score; // Update score after each button click
-      initializeGame();
-    });
-  });
+/*
+The handleButtonClick() has been implemented in order to solve a bug with the score part. There was an issue that caused the score to be updated multiple times for one correct answer. 
+The issue was due to the way we use the event listener for tracking click. One click could count as a randomly large number, being 2 or 70. By externaly handling the click, we solve the
+problem as we remove the event listener
+*/
 
+function handleButtonClick(event){
+  const selectedButtonIndex= Array.from(buttons).indexOf(event.target);
+  console.log("Selected index: "+selectedButtonIndex);
+
+  if(selectedButtonIndex===correctAnswerIndex){
+    console.log("Correct answer");
+    score=score+1;
+  }
+  else{
+    console.log("False answer");
+  }
+  console.log("New Score"+score);
+  document.getElementById('score').innerHTML=score;
+  buttons.forEach(btn=>btn.removeEventListener('click',handleButtonClick));
+  initializeGame();
 }
+
 function initializeGame(){
-options=optionSelection();
-correctAnswerIndex=Math.floor(Math.random()*5);// There are five options to choose from
-const correctAnswerName=countries[options[correctAnswerIndex]].name;
-const buttons=document.querySelectorAll('.option-button');
-
-updatingButtons(buttons);
-displayFlag();
-checkUserAnswer(buttons);
-
+  options=optionSelection();
+  correctAnswerIndex=Math.floor(Math.random()*5);
+  updatingButtons(buttons);
+  displayFlag();
+  buttons.forEach(button=>button.addEventListener('click',handleButtonClick));
 }
-
 initializeGame();
-
-
-
