@@ -237,17 +237,33 @@ function handleButtonClick(event){
 
   if(selectedButtonIndex===correctAnswerIndex){
     console.log("Correct answer");
+    event.target.classList.add('correctanswer');
+    
     score++;
   }
   else{
     console.log("False answer");
+    event.target.classList.add('incorrectanswer');
+
   }
+  buttons.forEach((btn,index) => {
+    if(index===correctAnswerIndex){
+      btn.classList.add('correctanswer');
+    }    
+  });
   console.log("New score="+score);
   document.getElementById("score").innerHTML=score;
   buttons.forEach(btn=>btn.removeEventListener('click',handleButtonClick));
-  initializeGame();
+  setTimeout(resetButtonStyles,4000);
 }
 
+function resetButtonStyles() {
+  buttons.forEach(btn => {
+    btn.classList.remove('correctanswer', 'incorrectanswer');
+  });
+
+  initializeGame();
+}
 function initializeGame(){
   options=optionSelection();
   correctAnswerIndex=Math.floor(Math.random()*5);
