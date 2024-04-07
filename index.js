@@ -3,7 +3,7 @@ let options, correctAnswerIndex;
 const buttons = document.querySelectorAll('.option-button');
 
 
-
+//Need to solve the fact that the same question can come up multiple times in the same party
 
 const countries = [
   { id: 1, name: "Afghanistan", flag: "https://flagcdn.com/256x192/af.png" },
@@ -254,7 +254,7 @@ function handleButtonClick(event){
   console.log("New score="+score);
   document.getElementById("score").innerHTML=score;
   buttons.forEach(btn=>btn.removeEventListener('click',handleButtonClick));
-  setTimeout(resetButtonStyles,4000);
+  setTimeout(resetButtonStyles,2500);
 }
 
 function resetButtonStyles() {
