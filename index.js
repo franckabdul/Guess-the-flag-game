@@ -203,10 +203,9 @@ const countries = [
   { id: 195, name: "Zambia", flag: "https://flagcdn.com/256x192/zm.png" },
   { id: 196, name: "Zimbabwe", flag: "https://flagcdn.com/256x192/zw.png" }
 ];
-
 function optionSelection(){
   const optionsArray=[];
-  while(options.length<5){
+  while(optionsArray.length<5){
     let index=Math.floor(Math.random()* countries.length);
     if(!optionsArray.includes(index)){
       optionsArray.push(index);
@@ -233,18 +232,18 @@ problem as we remove the event listener
 */
 
 function handleButtonClick(event){
-  const selectedButtonIndex= Array.from(buttons).indexOf(event.target);
-  console.log("Selected index: "+selectedButtonIndex);
+  const selectedButtonIndex=Array.from(buttons).indexOf(event.target);
+  console.log("Selected Index: "+selectedButtonIndex);
 
   if(selectedButtonIndex===correctAnswerIndex){
     console.log("Correct answer");
-    score=score+1;
+    score++;
   }
   else{
     console.log("False answer");
   }
-  console.log("New Score"+score);
-  document.getElementById('score').innerHTML=score;
+  console.log("New score="+score);
+  document.getElementById("score").innerHTML=score;
   buttons.forEach(btn=>btn.removeEventListener('click',handleButtonClick));
   initializeGame();
 }
@@ -254,6 +253,6 @@ function initializeGame(){
   correctAnswerIndex=Math.floor(Math.random()*5);
   updatingButtons(buttons);
   displayFlag();
-  buttons.forEach(button=>button.addEventListener('click',handleButtonClick));
+  buttons.forEach(btn=>btn.addEventListener('click',handleButtonClick));
 }
 initializeGame();
