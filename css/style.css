@@ -98,6 +98,12 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     background: blueviolet;
   }
+  .correctanswer{
+    background: green !important;
+  }
+  .incorrectanswer{
+    background: red !important;
+  }
   
   .score-box p {
     color: white;
@@ -106,5 +112,6 @@ body {
   
   .score-box #score {
     font-weight: bold;
+    
   }
   
