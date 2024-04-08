@@ -254,7 +254,14 @@ function handleButtonClick(event){
   console.log("New score="+score);
   document.getElementById("score").innerHTML=score;
   buttons.forEach(btn=>btn.removeEventListener('click',handleButtonClick));
-  setTimeout(resetButtonStyles,2500);
+  if(selectedButtonIndex===correctAnswerIndex){
+    setTimeout(resetButtonStyles,500);
+  }
+  else{
+    setTimeout(resetButtonStyles,2000);
+  }
+ 
+
 }
 
 function resetButtonStyles() {
