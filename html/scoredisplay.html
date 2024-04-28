@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Score</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+<div class="score-container">
+  <h2>Game Over</h2>
+  <p>Your final score:</p>
+  <p id="final-score">0</p>
+  <div class="menu-item">
+    <a href="../index.html">Main Menu</a>
+  </div>
+</div>
+
+<script>
+       document.addEventListener('DOMContentLoaded', function() {
+            var score = localStorage.getItem('Score');
+            document.getElementById('final-score').innerText = score+"/10";
+        });
+</script>
+</body>
+</html>

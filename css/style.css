@@ -8,6 +8,9 @@ body {
     background: linear-gradient(135deg, rgb(102, 126, 234), rgb(57, 47, 169));
     font-family: 'Arial', sans-serif;
   }
+  a{
+    text-decoration: none;
+  }
   
   .menu {
     background: rgba(255, 255, 255, 0.1);
@@ -37,16 +40,6 @@ body {
     background: linear-gradient(45deg, rgb(57, 47, 169), rgb(192, 47, 18));
   }
  /* Game Card Page */
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    font-family: 'Arial', sans-serif;
-  }
-  
   .game-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -115,3 +108,29 @@ body {
     
   }
   
+
+/* Display final score*/
+.score-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.score-container h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.score-container p {
+  color: white;
+  font-size: 18px;
+}
+
+.score-container #final-score {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 20px;
+}
