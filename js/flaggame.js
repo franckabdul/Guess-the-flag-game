@@ -208,11 +208,6 @@ const countries = [
 ];
 
 
-function gameOver(){
- 
-
-
-}
 
 function optionSelection(){
   const optionsArray=[];
@@ -278,7 +273,6 @@ function handleButtonClick(event){
 }
 
 function resetButtonStyles() {
-  const questions=[];
   buttons.forEach(btn => {
     btn.classList.remove('correctanswer', 'incorrectanswer');
   });
