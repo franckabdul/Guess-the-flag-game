@@ -14,6 +14,7 @@ The game randomly selects flags and country options from a predefined list. When
 - Interactive interface with clickable buttons for selecting options.
 - Real-time feedback on player's selections.
 - Final score displayed at the end of the game.
-
+## How to play
+Clone the repository and launch the index.html file
 
 
