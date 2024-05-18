@@ -15,12 +15,5 @@ The game randomly selects flags and country options from a predefined list. When
 - Real-time feedback on player's selections.
 - Final score displayed at the end of the game.
 
-## Bug Fix
 
-A bug causing the score to be updated multiple times for one correct answer was fixed. This was addressed by removing event listeners after a player's selection to prevent multiple clicks affecting the score.
 
-## Future Improvements
-
-- Addition of sound effects or animations to enhance user experience.
-- Integration of a timer for each round to add urgency.
-- Implementation of a leaderboard to track high scores.
