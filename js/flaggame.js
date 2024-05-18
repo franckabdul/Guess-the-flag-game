@@ -208,11 +208,6 @@ const countries = [
 ];
 
 
-function gameOver(){
- 
-
-
-}
 
 function optionSelection(){
   const optionsArray=[];
